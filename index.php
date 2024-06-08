@@ -9,9 +9,9 @@
 <body>
     <div id="record-section">
         <h2>Nehmen Sie Ihre Töne auf</h2>
-        <div id="recordings-list"></div>
-        <button id="start-recording">Aufnahme starten</button>
-        <button id="stop-recording" disabled>Aufnahme stoppen</button>
+        <div id="recordings-list">
+            <!-- Aufnahmeknöpfe und Listen werden hier dynamisch eingefügt -->
+        </div>
         <button id="start-game" disabled>Spiel starten</button>
     </div>
     <div id="game-board" style="display: none;">

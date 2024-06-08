@@ -12,6 +12,23 @@ body {
   margin: 20px;
 }
 
+#recordings-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.recording-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.recording-item audio {
+  margin-right: 10px;
+}
+
 #game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
