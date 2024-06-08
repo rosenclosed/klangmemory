@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const restartGameButton = document.getElementById('restart-game');
     let mediaRecorder;
     let recordedChunks = [];
-    let sounds = [];
+    let sounds = new Array(8).fill(null);
     let currentRecordingIndex = null;
 
     // Überprüfen, ob die Seite neu geladen wurde, und Local Storage leeren
@@ -25,10 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
         recordingItem.appendChild(audioElement);
 
         const recordButton = document.createElement('button');
-        recordButton.innerText = `Aufnahme ${i + 1}`;
+        recordButton.innerText = `🔴 ${i + 1}. Datei Aufnehmen`;
         recordButton.dataset.recording = 'false';
         recordButton.addEventListener('click', () => handleRecording(i, audioElement, recordButton));
         recordingItem.appendChild(recordButton);
+
+        const uploadButton = document.createElement('input');
+        uploadButton.type = 'file';
+        uploadButton.accept = 'audio/*';
+        uploadButton.addEventListener('change', (event) => handleUpload(event, i, audioElement));
+        recordingItem.appendChild(uploadButton);
 
         recordingsList.appendChild(recordingItem);
     }
@@ -50,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mediaRecorder.start();
 
             recordButton.dataset.recording = 'true';
-            recordButton.innerText = `Aufnahme ${index + 1} Stoppen`;
+            recordButton.innerText = `🟥 Aufnahme Stoppen`;
 
             mediaRecorder.ondataavailable = event => {
                 if (event.data.size > 0) {
@@ -66,16 +72,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 recordedChunks = [];
 
                 recordButton.dataset.recording = 'false';
-                recordButton.innerText = `Aufnahme ${index + 1}`;
+                recordButton.innerText = `☑️ Aufnahme ${index + 1}`;
 
                 // Speichere die Sounds im Local Storage
                 localStorage.setItem('sounds', JSON.stringify(sounds));
 
-                if (sounds.length === 8 && sounds.every(sound => sound)) {
+                if (sounds.every(sound => sound)) {
                     startGameButton.disabled = false;
                 }
             };
         }
+    }
+
+    // Handle file upload
+    function handleUpload(event, index, audioElement) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            sounds[index] = e.target.result;
+            audioElement.src = e.target.result;
+
+            // Speichere die Sounds im Local Storage
+            localStorage.setItem('sounds', JSON.stringify(sounds));
+
+            if (sounds.every(sound => sound)) {
+                startGameButton.disabled = false;
+            }
+        };
+        reader.readAsDataURL(file);
     }
 
     // Start game
@@ -113,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card-inner">
                     <div class="card-front"></div>
                     <div class="card-back">
-                        <img src="/assets/img/fart.png" alt="Fart" />
+                        <img src="assets/img/fart.png" alt="Fart" />
                     </div>
                 </div>
             `;
@@ -146,14 +170,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const sound2 = card2.dataset.sound;
 
             if (sound1 === sound2) {
-                flippedCards = [];
-                matchedPairs++;
-                if (matchedPairs === 8) {
-                    setTimeout(() => {
-                        alert('Herzlichen Glückwunsch! Sie haben das Spiel gewonnen!');
-                    }, 500);
-                    localStorage.removeItem('gameStarted');
-                }
+                setTimeout(() => {
+                    card1.classList.add('invisible');
+                    card2.classList.add('invisible');
+                    flippedCards = [];
+                    matchedPairs++;
+                    if (matchedPairs === 8) {
+                        setTimeout(() => {
+                            alert('Herzlichen Glückwunsch! Sie haben das Spiel gewonnen!');
+                        }, 500);
+                        localStorage.removeItem('gameStarted');
+                    }
+                }, 1000); // Delay for 1 second before making cards invisible
             } else {
                 setTimeout(() => {
                     card1.classList.remove('flip');
