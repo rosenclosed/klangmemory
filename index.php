@@ -17,7 +17,7 @@ header("Expires: 0"); // Proxies
     <link rel="icon" type="image/png" sizes="194x194" href="/favicon-194x194.png?v=1">
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=1">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
-    <link rel="manifest" href="/manifest.webmanifest?v=1">
+    <link rel="manifest" href="https://klangmemory.developedbyrose.de/manifest.webmanifest?v=1">
     <link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#4caf50">
     <link rel="shortcut icon" href="/favicon.ico?v=1">
     <meta name="apple-mobile-web-app-title" content="Klangmemory">
@@ -31,7 +31,7 @@ header("Expires: 0"); // Proxies
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js').then(registration => {
+      navigator.serviceWorker.register('https://klangmemory.developedbyrose.de/service-worker.js').then(registration => {
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
       }, err => {
         console.log('ServiceWorker registration failed: ', err);
