@@ -17,7 +17,7 @@ header("Expires: 0"); // Proxies
     <link rel="icon" type="image/png" sizes="194x194" href="/favicon-194x194.png?v=1">
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=1">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1">
-    <link rel="manifest" href="/site.webmanifest?v=1">
+    <link rel="manifest" href="/manifest.webmanifest?v=1">
     <link rel="mask-icon" href="/safari-pinned-tab.svg?v=1" color="#4caf50">
     <link rel="shortcut icon" href="/favicon.ico?v=1">
     <meta name="apple-mobile-web-app-title" content="Klangmemory">
@@ -26,7 +26,6 @@ header("Expires: 0"); // Proxies
     <meta name="msapplication-TileImage" content="/mstile-144x144.png?v=1">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="manifest" href="manifest.webmanifest" />
 </head>
 <body>
 <script>
