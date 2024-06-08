@@ -1,3 +1,8 @@
+<?php
+header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1
+header("Pragma: no-cache"); // HTTP 1.0
+header("Expires: 0"); // Proxies
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -5,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klangmemory</title>
     <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 </head>
 <body>
     <div id="record-section">
@@ -17,6 +25,7 @@
     <div id="game-board" style="display: none;">
         <!-- Die Karten werden hier dynamisch eingefügt -->
     </div>
+    <button id="restart-game" style="display: none;">Neues Spiel</button>
     <script src="js/script.js"></script>
     <script>
   if ('serviceWorker' in navigator) {
