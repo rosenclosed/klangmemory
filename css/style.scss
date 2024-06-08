@@ -22,8 +22,10 @@ body {
 .recording-item {
     display: flex;
     align-items: center;
+    gap: 10px;
     margin-bottom: 10px;
 }
+
 
 .recording-item audio {
     margin-right: 10px;
@@ -84,4 +86,17 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+button {
+    border-radius: 1rem;
+    background-color: #4CAF50;
+    color: black;
+    border: 0px;
+    cursor: pointer;
+    padding: 0.5em 1em;
+}
+
+.invisible {
+    visibility: hidden;
 }
