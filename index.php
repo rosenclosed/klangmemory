@@ -26,7 +26,7 @@ header("Expires: 0"); // Proxies
     <meta name="msapplication-TileImage" content="/mstile-144x144.png?v=1">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="manifest.webmanifest" />
 </head>
 <body>
 <script>
